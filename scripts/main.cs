@@ -401,7 +401,7 @@ public partial class main : Node{
             }
         }
 
-        
+
         return false;        
     }
 
@@ -437,7 +437,7 @@ public partial class main : Node{
                 Input.ActionRelease("move_up");
             }
             
-            if(dir != Dir.None)
+            if(dir != Dir.None && DryMerge(dir))
             {
                 // merges
                 /*

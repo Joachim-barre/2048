@@ -2,7 +2,7 @@
 
 ## font
 
-- [04b_30](http://www.04.jp.org/) (freeware)
+- [04b_30](http://www.04.jp.org/) (freeware) [download](https://www.dafont.com/04b-30.font)
 
 ## images
 

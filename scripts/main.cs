@@ -196,7 +196,7 @@ public partial class main : Node{
     }
 
     // push and merge
-    // TODO : make this function only merge and fix it
+    // TODO : fix it
     public void Merge(Dir dir)
     {
         var new_pos = new tile.StateChage[4,4]{
@@ -224,32 +224,30 @@ public partial class main : Node{
                 if (val1 == 0)
                     continue;
 
-                for (int k = j + 1; k < 4; k++) 
-                {
-                    int idx3 = get_idx1(dir, i, k);
-                    int idx4 = get_idx2(dir, i, k);
-                    int val2 = vals[idx3, idx4];
+                int k = j + 1; 
+                int idx3 = get_idx1(dir, i, k);
+                int idx4 = get_idx2(dir, i, k);
+                int val2 = vals[idx3, idx4];
 
-                    if (val2 == 0)
-                        continue;
-                    else if (val1 == val2)
-                    {
-                        Log.dbg("merge :");
-                        Log.dbg("\tdir : " + dir.ToString());
-                        Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
-                        Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
-                        Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
-                        vals[idx1, idx2] = val1 + val2;
-                        vals[idx3, idx4] = 0;
-                        new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
-                        new_pos[idx1, idx2].stateCode = tile.StateChageCode.Upgrade;
-                        new_pos[idx3, idx4].new_pos = new_pos[idx1, idx2].new_pos;
-                        new_pos[idx1,idx2].fusedWith = tiles[idx3, idx4];
-                        new_pos[idx3,idx4].fusedWith = tiles[idx1, idx2]; 
-                        break; 
-                    }else
-                        break;
-                }
+                if (val2 == 0)
+                    continue;
+                else if (val1 == val2)
+                {
+                    Log.dbg("merge :");
+                    Log.dbg("\tdir : " + dir.ToString());
+                    Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
+                    Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
+                    Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
+                    vals[idx1, idx2] = val1 + val2;
+                    vals[idx3, idx4] = 0;
+                    new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
+                    new_pos[idx1, idx2].stateCode = tile.StateChageCode.Upgrade;
+                    new_pos[idx3, idx4].new_pos = new_pos[idx1, idx2].new_pos;
+                    new_pos[idx1,idx2].fusedWith = tiles[idx3, idx4];
+                    new_pos[idx3,idx4].fusedWith = tiles[idx1, idx2]; 
+                    break; 
+                }else
+                    break;
             }
         }
         tile[,] next_tiles = new tile[4,4]{
@@ -503,6 +501,7 @@ public partial class main : Node{
                 }*/
 
                 pre_value = GetValues();
+                Push(dir);
                 Merge(dir);
                 Push(dir);
                 GenerateTile();

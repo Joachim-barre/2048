@@ -273,7 +273,6 @@ public partial class main : Node{
     }
 
     // push tiles
-    // TODO : fix this thing
     public void Push(Dir dir){
         var new_pos = new tile.StateChage[4,4]{
             {null,null,null,null},
@@ -289,7 +288,7 @@ public partial class main : Node{
         int[,] vals = GetValues(); 
         for (int i = 0; i < 4; i++)
         {
-            for (int j = 3; j >= 0; j--) 
+            for (int j = 0; j <= 3; j++) 
             {
                 // Log.dbg("---------------------------------------");
                 int idx1 = get_idx1(dir, i, j);

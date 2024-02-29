@@ -501,8 +501,7 @@ public partial class main : Node{
                 Merge(dir);
                 Push(dir);
                 GenerateTile();
-                // checkj for game over
-                // TODO : fix this too
+                // check for game over
                 if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
                 {
                     IsGameOver = true;

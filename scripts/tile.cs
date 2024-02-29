@@ -111,6 +111,9 @@ public partial class tile : Node2D
             {
                 state_target.fusedWith.state_target.new_pos = state.new_pos;
             }
+            if(state_target.fusedWith == null){
+                state_target.fusedWith = state.fusedWith;
+            }
             switch(state.stateCode)
             {
                 case StateChageCode.Delete:

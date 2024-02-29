@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dul0lktcikt03"]
+[gd_scene load_steps=4 format=3 uid="uid://dul0lktcikt03"]
 
 [ext_resource type="Script" path="res://scripts/tile.cs" id="1_ea5lm"]
 [ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="2_8nirj"]
-[ext_resource type="PackedScene" uid="uid://cfepf0awyijnx" path="res://scenes/logger.tscn" id="3_qyqrk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq3bs"]
 corner_radius_top_left = 30
@@ -25,5 +24,3 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yq3bs")
 text = "2048"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Logger" parent="." instance=ExtResource("3_qyqrk")]

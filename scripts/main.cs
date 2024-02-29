@@ -373,7 +373,7 @@ public partial class main : Node{
         int[,] vals = GetValues(); 
         for (int i = 0; i < 4; i++)
         {
-            for (int j = 2; j >= 0; j--)
+            for (int j = 0; j < 3; j++)
             {
                 // Log.dbg("---------------------------------------");
                 int idx1 = get_idx1(dir, i, j);

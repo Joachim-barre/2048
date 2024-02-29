@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dul0lktcikt03"]
+
+[ext_resource type="Script" path="res://scripts/tile.cs" id="1_ea5lm"]
+[ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://font.TTF" id="2_gmmev"]
+[ext_resource type="PackedScene" uid="uid://cfepf0awyijnx" path="res://scenes/logger.tscn" id="3_qyqrk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq3bs"]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Tile" type="Node2D" groups=["tiles"]]
+position = Vector2(1, 0)
+script = ExtResource("1_ea5lm")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gmmev")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq3bs")
+text = "2048"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logger" parent="." instance=ExtResource("3_qyqrk")]

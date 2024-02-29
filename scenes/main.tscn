@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb3c67oqa2xhq"]
+
+[ext_resource type="Script" path="res://scripts/main.cs" id="1_1geir"]
+[ext_resource type="PackedScene" uid="uid://dul0lktcikt03" path="res://scenes/tile.tscn" id="2_lefvm"]
+[ext_resource type="PackedScene" uid="uid://be5qkyopkd1k3" path="res://scenes/hud.tscn" id="3_ack1x"]
+[ext_resource type="PackedScene" uid="uid://cfepf0awyijnx" path="res://scenes/logger.tscn" id="4_oeiin"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1geir")
+TileScene = ExtResource("2_lefvm")
+TileMapPos = Vector2(50, 260)
+TileMapSize = Vector2(380, 380)
+TileSize = Vector2(80, 80)
+TileSpacing = Vector2(20, 20)
+
+[node name="Hud" parent="." instance=ExtResource("3_ack1x")]
+
+[node name="Logger" parent="." instance=ExtResource("4_oeiin")]
+
+[connection signal="GameOver" from="." to="Hud" method="Update" binds= [true]]
+[connection signal="Reset" from="Hud" to="." method="OnReset"]
+[connection signal="Undo" from="Hud" to="." method="OnUndo"]

@@ -1,0 +1,250 @@
+[gd_scene load_steps=8 format=3 uid="uid://be5qkyopkd1k3"]
+
+[ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://font.TTF" id="1_6oev1"]
+[ext_resource type="Script" path="res://scripts/hud.cs" id="1_m87vq"]
+[ext_resource type="Texture2D" uid="uid://1o642dsuqdoj" path="res://images/restart_alt_FILL0_wght400_GRAD0_opsz48.svg" id="2_03gng"]
+[ext_resource type="Texture2D" uid="uid://xirp68q1c6ka" path="res://images/undo_FILL0_wght400_GRAD0_opsz48.svg" id="3_ycp1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp3u7"]
+bg_color = Color(0.478431, 0.415686, 0.305882, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvg51"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lcwi"]
+bg_color = Color(0.905882, 0.807843, 0.0862745, 0.827451)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 720.0
+script = ExtResource("1_m87vq")
+metadata/_edit_group_ = true
+
+[node name="BgRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.705882, 0.631373, 0.501961, 1)
+
+[node name="TilesBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -470.0
+offset_right = 200.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pp3u7")
+metadata/_edit_group_ = true
+
+[node name="TileVoid1" type="Panel" parent="TilesBg"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid2" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid3" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 10.0
+offset_right = 290.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid4" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid5" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 90.0
+offset_bottom = 190.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid6" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 110.0
+offset_right = 190.0
+offset_bottom = 190.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid7" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 110.0
+offset_right = 290.0
+offset_bottom = 190.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid8" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 110.0
+offset_right = 390.0
+offset_bottom = 190.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid9" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 210.0
+offset_right = 90.0
+offset_bottom = 290.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid10" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 310.0
+offset_right = 90.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid11" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 210.0
+offset_right = 190.0
+offset_bottom = 290.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid12" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 310.0
+offset_right = 190.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid13" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 210.0
+offset_right = 290.0
+offset_bottom = 290.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid14" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 310.0
+offset_right = 290.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid15" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 310.0
+offset_right = 390.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="TileVoid16" type="Panel" parent="TilesBg"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 210.0
+offset_right = 390.0
+offset_bottom = 290.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Panel" parent="CanvasLayer"]
+offset_left = 350.0
+offset_top = 160.0
+offset_right = 430.0
+offset_bottom = 240.0
+metadata/_edit_group_ = true
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/ResetButton"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(1.666, 1.666)
+texture_normal = ExtResource("2_03gng")
+texture_pressed = ExtResource("2_03gng")
+texture_hover = ExtResource("2_03gng")
+texture_disabled = ExtResource("2_03gng")
+texture_focused = ExtResource("2_03gng")
+
+[node name="UndoButton" type="Panel" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 160.0
+offset_right = 330.0
+offset_bottom = 240.0
+metadata/_edit_group_ = true
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/UndoButton"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(1.666, 1.666)
+texture_normal = ExtResource("3_ycp1m")
+texture_pressed = ExtResource("3_ycp1m")
+texture_hover = ExtResource("3_ycp1m")
+texture_disabled = ExtResource("3_ycp1m")
+texture_focused = ExtResource("3_ycp1m")
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("1_6oev1")
+theme_override_font_sizes/font_size = 128
+text = "2048"
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 250.0
+offset_right = 440.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6oev1")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_2lcwi")
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/ResetButton/TextureButton" to="." method="OnResetButtonPressed"]
+[connection signal="pressed" from="CanvasLayer/UndoButton/TextureButton" to="." method="OnUndoButtonPressed"]

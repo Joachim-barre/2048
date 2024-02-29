@@ -23,7 +23,6 @@ public partial class tile : Node2D
     public float scale;
     private int value;
     public StateChage state_target;
-    private logger log;
     public Vector2 _pos;
 
     private static readonly Dictionary<int, Color> colors;
@@ -75,7 +74,6 @@ public partial class tile : Node2D
     }
 
     public override void _Ready(){
-        log = GetNode<logger>("Logger");
         value = 2;
         scale = 0.5F;
         UpdateTexture();
@@ -100,10 +98,10 @@ public partial class tile : Node2D
         AddToGroup("animating_tiles");
         if(state.new_pos != _pos || state.stateCode != StateChageCode.None)
         {
-            log.log("tile_chance : ");
-            log.log("\t" + _pos.ToString());
-            log.log("\t" + state.new_pos.ToString());
-            log.log("\t" + state.stateCode.ToString());
+            Log.dbg("tile_chance : ");
+            Log.dbg("\t" + _pos.ToString());
+            Log.dbg("\t" + state.new_pos.ToString());
+            Log.dbg("\t" + state.stateCode.ToString());
         }if(state_target != null){
             state_target.new_pos = state.new_pos;
             if(state_target.fusedWith != null && state_target.stateCode == StateChageCode.Upgrade)

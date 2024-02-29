@@ -25,7 +25,6 @@ public partial class main : Node{
 
     private tile[,] tiles;
     private int[,] pre_value;
-    private logger log;
 
     public enum Dir
     {
@@ -107,8 +106,8 @@ public partial class main : Node{
         }
         int idx = (int)Mathf.Abs(GD.Randi() % nullIndices.Count);
         Vector2 pos = nullIndices[idx];
-        log.log("generated tile : ");
-        log.log("\t" + pos.ToString());
+        Log.dbg("generated tile : ");
+        Log.dbg("\t" + pos.ToString());
         var Tile = CreateTile(pos);
         Tile.SetValue(((int)Mathf.Abs(GD.Randi() % 10))<=7 ? 2 : 4);
         return Tile;
@@ -132,7 +131,7 @@ public partial class main : Node{
 
     public void OnReset()
     {
-        log.log("<<<  RESET  >>>");
+        Log.dbg("<<<  RESET  >>>");
         pre_value = GetValues();
         tiles = new tile[4,4]{
             {null,null,null,null},
@@ -149,7 +148,7 @@ public partial class main : Node{
     public void OnUndo()
     {
         GetTree().CallGroup("tiles", Node.MethodName.QueueFree);
-        log.log("<<<  UNDO  >>>");
+        Log.dbg("<<<  UNDO  >>>");
         tiles = new tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
@@ -172,7 +171,6 @@ public partial class main : Node{
 
     public override void _Ready()
     {
-        log = GetNode<logger>("Logger");
         GD.Randomize();
         tiles = new tile[4,4]{
             {null,null,null,null},
@@ -208,11 +206,11 @@ public partial class main : Node{
         {
             for (int j = 2; j >= 0; j--)
             {
-                // log.log("---------------------------------------");
+                // Log.dbg("---------------------------------------");
                 int idx1 = get_idx1(dir, i, j);
                 int idx2 = get_idx2(dir, i, j);
                 int val1 = vals[idx1, idx2];
-                //log.log("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
+                //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
                 
                 if (val1 == 0)
                     continue;
@@ -227,11 +225,11 @@ public partial class main : Node{
                         continue;
                     else if (val1 == val2)
                     {
-                        log.log("merge :");
-                        log.log("\tdir : " + dir.ToString());
-                        log.log("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
-                        log.log("\ttile 1 : " + tiles[idx1, idx2].ToString());
-                        log.log("\ttile 2 : " + tiles[idx3, idx4].ToString());
+                        Log.dbg("merge :");
+                        Log.dbg("\tdir : " + dir.ToString());
+                        Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
+                        Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
+                        Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
                         vals[idx1, idx2] = val1 + val2;
                         vals[idx3, idx4] = 0;
                         new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
@@ -287,11 +285,11 @@ public partial class main : Node{
         {
             for (int j = 3; j >= 0; j--) 
             {
-                // log.log("---------------------------------------");
+                // Log.dbg("---------------------------------------");
                 int idx1 = get_idx1(dir, i, j);
                 int idx2 = get_idx2(dir, i, j);
                 int val1 = vals[idx1, idx2];
-                //log.log("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
+                //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
                 
                 if (val1 == 0)
                     continue;
@@ -305,11 +303,11 @@ public partial class main : Node{
                         break;
                     if(k == 0)
                     {
-                        log.log("push (border):");
-                        log.log("\tdir : " + dir.ToString());
-                        log.log("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
-                        log.log("\ttile : " + tiles[idx1, idx2].ToString());
-                        log.log("\tpos : " + new Vector2(idx3, idx4));
+                        Log.dbg("push (border):");
+                        Log.dbg("\tdir : " + dir.ToString());
+                        Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
+                        Log.dbg("\ttile : " + tiles[idx1, idx2].ToString());
+                        Log.dbg("\tpos : " + new Vector2(idx3, idx4));
                         vals[idx1, idx2] = 0;
                         vals[idx3, idx4] = val1;
 
@@ -324,11 +322,11 @@ public partial class main : Node{
                                         
                     if (val3 != 0)
                     {
-                        log.log("push :");
-                        log.log("\tdir : " + dir.ToString());
-                        log.log("\t(val1, val2, val3) : " + new Vector3(val1, val2, val3).ToString());
-                        log.log("\ttile : " + tiles[idx1, idx2].ToString());
-                        log.log("\tpos : " + new Vector2(idx3, idx4));
+                        Log.dbg("push :");
+                        Log.dbg("\tdir : " + dir.ToString());
+                        Log.dbg("\t(val1, val2, val3) : " + new Vector3(val1, val2, val3).ToString());
+                        Log.dbg("\ttile : " + tiles[idx1, idx2].ToString());
+                        Log.dbg("\tpos : " + new Vector2(idx3, idx4));
                         vals[idx1, idx2] = 0; 
                         vals[idx3, idx4] = val1;
 
@@ -370,11 +368,11 @@ public partial class main : Node{
         {
             for (int j = 2; j >= 0; j--)
             {
-                // log.log("---------------------------------------");
+                // Log.dbg("---------------------------------------");
                 int idx1 = get_idx1(dir, i, j);
                 int idx2 = get_idx2(dir, i, j);
                 int val1 = vals[idx1, idx2];
-                //log.log("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
+                //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
                 
                 if (val1 == 0)
                     continue;
@@ -390,11 +388,11 @@ public partial class main : Node{
                     else if (val1 == val2)
                     {
                         /*
-                        log.log("dry merge :");
-                        log.log("\tdir : " + dir.ToString());
-                        log.log("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
-                        log.log("\ttile 1 : " + tiles[idx1, idx2].ToString());
-                        log.log("\ttile 2 : " + tiles[idx3, idx4].ToString());
+                        Log.dbg("dry merge :");
+                        Log.dbg("\tdir : " + dir.ToString());
+                        Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
+                        Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
+                        Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
                         */
                         vals[idx1, idx2] = val1 + val2;
                         vals[idx3, idx4] = 0;

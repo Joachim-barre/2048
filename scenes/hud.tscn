@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://be5qkyopkd1k3"]
 
-[ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://font.TTF" id="1_6oev1"]
+[ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="1_6oev1"]
 [ext_resource type="Script" path="res://scripts/hud.cs" id="1_m87vq"]
-[ext_resource type="Texture2D" uid="uid://1o642dsuqdoj" path="res://images/material icons/restart_alt_FILL0_wght400_GRAD0_opsz48.svg" id="2_03gng"]
-[ext_resource type="Texture2D" uid="uid://xirp68q1c6ka" path="res://images/material icons/undo_FILL0_wght400_GRAD0_opsz48.svg" id="3_ycp1m"]
+[ext_resource type="Texture2D" uid="uid://1o642dsuqdoj" path="res://assets/images/material icons/restart_alt_FILL0_wght400_GRAD0_opsz48.svg" id="2_03gng"]
+[ext_resource type="Texture2D" uid="uid://xirp68q1c6ka" path="res://assets/images/material icons/undo_FILL0_wght400_GRAD0_opsz48.svg" id="3_ycp1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp3u7"]
 bg_color = Color(0.478431, 0.415686, 0.305882, 1)

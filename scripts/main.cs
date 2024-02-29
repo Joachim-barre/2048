@@ -195,8 +195,7 @@ public partial class main : Node{
         //OnUndo();
     }
 
-    // push and merge
-    // TODO : fix it
+    // merge
     public void Merge(Dir dir)
     {
         var new_pos = new tile.StateChage[4,4]{

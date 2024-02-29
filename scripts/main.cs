@@ -505,7 +505,7 @@ public partial class main : Node{
                 // TODO : fix this too
                 if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
                 {
-                    IsGameOver = false;
+                    IsGameOver = true;
                     EmitSignal(SignalName.GameOver);
                 }
             }

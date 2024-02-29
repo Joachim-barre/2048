@@ -381,45 +381,14 @@ public partial class main : Node{
     // TODO : stop repetition and fix this
     public bool DryMerge(Dir dir)
     {
+        tile[,] true_tiles = tiles;
+
+        Push(dir, false);
+        Merge(dir, false);
+
         int[,] vals = GetValues(); 
-        for (int i = 0; i < 4; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                // Log.dbg("---------------------------------------");
-                int idx1 = get_idx1(dir, i, j);
-                int idx2 = get_idx2(dir, i, j);
-                int val1 = vals[idx1, idx2];
-                //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
-                
-                if (val1 == 0)
-                    continue;
-
-                for (int k = j + 1; k < 4; k++) 
-                {
-                    int idx3 = get_idx1(dir, i, k);
-                    int idx4 = get_idx2(dir, i, k);
-                    int val2 = vals[idx3, idx4];
-
-                    if (val2 == 0)
-                        continue;
-                    else if (val1 == val2)
-                    {
-                        /*
-                        Log.dbg("dry merge :");
-                        Log.dbg("\tdir : " + dir.ToString());
-                        Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
-                        Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
-                        Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
-                        */
-                        vals[idx1, idx2] = val1 + val2;
-                        vals[idx3, idx4] = 0;
-                        break; 
-                    }else
-                        break;
-                }
-            }
-        }
+        
+        tiles = true_tiles;
 
         for (int i = 0; i < vals.GetLength(0); i++)
         {

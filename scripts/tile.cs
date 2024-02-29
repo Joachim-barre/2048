@@ -104,6 +104,7 @@ public partial class tile : Node2D
             Log.dbg("\t" + _pos.ToString());
             Log.dbg("\t" + state.new_pos.ToString());
             Log.dbg("\t" + state.stateCode.ToString());
+            Log.dbg("\t" + (state.fusedWith == null ? "null" : state.fusedWith.ToString()));
         }if(state_target != null){
             state_target.new_pos = state.new_pos;
             if(state_target.fusedWith != null && state_target.stateCode == StateChageCode.Upgrade)

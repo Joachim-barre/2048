@@ -196,7 +196,7 @@ public partial class main : Node{
     }
 
     // merge
-    public void Merge(Dir dir)
+    public void Merge(Dir dir, bool update=true)
     {
         var new_pos = new tile.StateChage[4,4]{
             {null,null,null,null},
@@ -232,7 +232,10 @@ public partial class main : Node{
                     continue;
                 else if (val1 == val2)
                 {
-                    Log.dbg("merge :");
+                    if(update)
+                        Log.dbg("merge :");
+                    else
+                        Log.dbg("merge(no update) :");
                     Log.dbg("\tdir : " + dir.ToString());
                     Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
                     Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
@@ -258,7 +261,8 @@ public partial class main : Node{
         {
             for(int j = 0;j != 4;j++)
             {   
-                tiles[i,j]?.Update(new_pos[i,j]);
+                if(update)
+                    tiles[i,j]?.Update(new_pos[i,j]);
                 if(vals[i,j] != 0)
                 {                            
                     if(new_pos[i,j].stateCode != tile.StateChageCode.Delete)
@@ -273,7 +277,7 @@ public partial class main : Node{
     }
 
     // push tiles
-    public void Push(Dir dir){
+    public void Push(Dir dir, bool update = true){
         var new_pos = new tile.StateChage[4,4]{
             {null,null,null,null},
             {null,null,null,null},
@@ -308,7 +312,10 @@ public partial class main : Node{
                         break;
                     if(k == 0)
                     {
-                        Log.dbg("push (border):");
+                        if(update)
+                            Log.dbg("push (border):");
+                        else
+                            Log.dbg("push (border)(noupdate):");
                         Log.dbg("\tdir : " + dir.ToString());
                         Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
                         Log.dbg("\ttile : " + tiles[idx1, idx2].ToString());
@@ -327,7 +334,10 @@ public partial class main : Node{
                                         
                     if (val3 != 0)
                     {
-                        Log.dbg("push :");
+                        if(update)
+                            Log.dbg("push :");
+                        else
+                            Log.dbg("push (noupdate):");
                         Log.dbg("\tdir : " + dir.ToString());
                         Log.dbg("\t(val1, val2, val3) : " + new Vector3(val1, val2, val3).ToString());
                         Log.dbg("\ttile : " + tiles[idx1, idx2].ToString());
@@ -351,7 +361,8 @@ public partial class main : Node{
         {
             for(int j = 0;j != 4;j++)
             {   
-                tiles[i,j]?.Update(new_pos[i,j]);
+                if(update)
+                    tiles[i,j]?.Update(new_pos[i,j]);
                 if(tiles[i,j] != null)
                 {                            
                     if(tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)

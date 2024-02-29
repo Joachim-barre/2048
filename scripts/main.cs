@@ -34,7 +34,8 @@ public partial class main : Node{
         Up,
         Down,
     }
-
+    
+    // transform r and c to get the first array index to acces the array in a specified direction
     private int get_idx2(Dir dir,int r, int c)
     {
         switch(dir)
@@ -48,6 +49,7 @@ public partial class main : Node{
         }
     }
 
+    // transform r and c to get the first array index to acces the array in a specified direction
     private int get_idx1(Dir dir, int r, int c)
     {
         switch(dir)
@@ -61,6 +63,7 @@ public partial class main : Node{
         }
     }
 
+    // turn window position to grid position
     public Vector2 WinToGrid(Vector2 _win)
     {
         Vector2 _grid = _win;
@@ -69,6 +72,7 @@ public partial class main : Node{
         return _grid;
     }
 
+    // turn grid position to window position
     public Vector2 GridToWin(Vector2 _grid)
     {
         Vector2 _win = _grid;
@@ -81,6 +85,7 @@ public partial class main : Node{
         while(GetTree().HasGroup("animating_tiles")){}
     }
 
+    // create a tile a the specified grid position
     public tile CreateTile(Vector2 _pos)
     {
         var Tile = TileScene.Instantiate<tile>();
@@ -92,6 +97,7 @@ public partial class main : Node{
         return Tile;
     }
 
+    // generate a tile at a random free postion on the grid
     public tile GenerateTile(){
         var nullIndices = new Array<Vector2>();
         for (int i = 0; i < tiles.GetLength(0); i++)
@@ -113,6 +119,7 @@ public partial class main : Node{
         return Tile;
     }
 
+    // get the grid as an array of values
     public int[,] GetValues()
     {
         int[,] vals = new int[4,4]{
@@ -188,6 +195,8 @@ public partial class main : Node{
         //OnUndo();
     }
 
+    // push and merge
+    // TODO : make this function only merge and fix it
     public void Merge(Dir dir)
     {
         var new_pos = new tile.StateChage[4,4]{
@@ -268,6 +277,8 @@ public partial class main : Node{
         tiles = next_tiles;
     }
 
+    // push tiles
+    // TODO : fix this thing
     public void Push(Dir dir){
         var new_pos = new tile.StateChage[4,4]{
             {null,null,null,null},
@@ -361,6 +372,8 @@ public partial class main : Node{
 
     }
 
+    // do the same as the merge function but doesn't update tile and check for game over
+    // TODO : stop repetition and fix this
     public bool DryMerge(Dir dir)
     {
         int[,] vals = GetValues(); 
@@ -425,6 +438,7 @@ public partial class main : Node{
             
             Dir dir = Dir.None;
 
+            //check for key
             if (Input.IsActionPressed("move_right"))
             {
                 dir = Dir.Right;
@@ -492,6 +506,8 @@ public partial class main : Node{
                 Merge(dir);
                 Push(dir);
                 GenerateTile();
+                // checkj for game over
+                // TODO : fix this too
                 if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
                 {
                     IsGameOver = false;

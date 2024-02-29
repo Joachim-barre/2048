@@ -88,11 +88,13 @@ public partial class tile : Node2D
         return value;
     }
 
+    // Update position to match the scale
     public void UpdatePos()
     {
         Position = new Vector2(_pos.X + 40 * (1-scale), _pos.Y + 40 * (1-scale));
     }
 
+    // set the target state of a tile 
     public void Update(StateChage state)
     {
         AddToGroup("animating_tiles");

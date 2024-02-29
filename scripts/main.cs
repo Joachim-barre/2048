@@ -366,7 +366,7 @@ public partial class main : Node{
 
     }
 
-    // do the same as the merge function but doesn't update tile and check for game over
+    // do the same as push then merge function but doesn't update tile and check for game over
     // TODO : stop repetition and fix this
     public bool DryMerge(Dir dir)
     {

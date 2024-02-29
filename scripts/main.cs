@@ -243,11 +243,9 @@ public partial class main : Node{
                     new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
                     new_pos[idx1, idx2].stateCode = tile.StateChageCode.Upgrade;
                     new_pos[idx3, idx4].new_pos = new_pos[idx1, idx2].new_pos;
-                    new_pos[idx1,idx2].fusedWith = tiles[idx3, idx4];
-                    new_pos[idx3,idx4].fusedWith = tiles[idx1, idx2]; 
-                    break; 
-                }else
-                    break;
+                    new_pos[idx3,idx4].fusedWith = tiles[idx1, idx2];
+                    new_pos[idx1,idx2].fusedWith = tiles[idx3, idx4]; 
+                }
             }
         }
         tile[,] next_tiles = new tile[4,4]{

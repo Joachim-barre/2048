@@ -29,7 +29,7 @@ project/assembly_name="2048-godot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

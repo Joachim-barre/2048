@@ -1,9 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 game.keystore
-android/build/.gradle
-android/build/assets
-android/build/build
-android/build/res
-android/build/res
-android/build/res/drawable
+android/build

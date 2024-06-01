@@ -1,6 +1,6 @@
 A small 2048 clone witen in c# with the godot engine
 
-android support is WIP (no touchscreen support)
+with linux,windows and android support
 
 # Credits
 

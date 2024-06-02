@@ -77,6 +77,18 @@ public partial class main : Node{
         GetNode<hud>("Hud").UpdateScore(Score);
     }
 
+    private void Save(){
+        try {
+            Log.dbg("saving game state");
+            var Save = new SaveData();
+            Save.Score = Score;
+            Save.LoadVals(GetValues());
+            ResourceSaver.Save(Save, "user://save.tres");
+        }catch(System.Exception e){
+            Log.error($"Failed to save data with Exception : {e}");
+        }
+    }
+
     // turn window position to grid position
     public Vector2 WinToGrid(Vector2 _win)
     {
@@ -166,6 +178,7 @@ public partial class main : Node{
         GenerateTile();
         IsGameOver = false;
         Score = 0;
+        Save();
     }
 
     public void OnUndo()
@@ -191,6 +204,7 @@ public partial class main : Node{
             }
         }
         Score = PreScore;
+        Save();
     }
 
     public override void _Ready()
@@ -502,6 +516,7 @@ public partial class main : Node{
                 Push(dir);
                 GenerateTile();
                 Log.dbg($"new score {Score}");
+                Save();
                 // check for game over
                 if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
                 {

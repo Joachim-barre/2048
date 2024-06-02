@@ -89,6 +89,21 @@ public partial class main : Node{
         }
     }
 
+    private bool Load(){
+        try {
+            Log.dbg("Loading game state");
+            var Save = ResourceLoader.Load<SaveData>("user://save.tres");
+            PreScore = Save.Score;
+            pre_value = Save.GetVals();
+            OnUndo();
+            return true;
+        }catch(System.Exception e){
+            Log.error($"Failed to save data with Exception : {e}");
+            return false;
+        }
+
+    }
+
     // turn window position to grid position
     public Vector2 WinToGrid(Vector2 _win)
     {
@@ -222,7 +237,8 @@ public partial class main : Node{
             {4    ,64    ,1024   ,16384},
             {8    ,128   ,2048   ,32768},
         };*/
-        OnReset();
+        if(!Load())
+            OnReset();
         //OnUndo();
     }
 

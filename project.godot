@@ -14,6 +14,7 @@ config/name="2048-godot"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://assets/images/main_icon.png"
+config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 

@@ -7,6 +7,7 @@
 script = ExtResource("1_yymfi")
 
 [node name="MainIcon" type="SubViewport" parent="."]
+transparent_bg = true
 size = Vector2i(192, 192)
 render_target_update_mode = 4
 

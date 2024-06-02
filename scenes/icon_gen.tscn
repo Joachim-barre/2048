@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbtkkin4t0n3p"]
+[gd_scene load_steps=4 format=3 uid="uid://dbtkkin4t0n3p"]
 
 [ext_resource type="Script" path="res://scripts/IconGen.cs" id="1_yymfi"]
 [ext_resource type="PackedScene" uid="uid://dul0lktcikt03" path="res://scenes/tile.tscn" id="2_cbhaf"]
+[ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="3_meqnu"]
 
 [node name="IconGen" type="Node"]
 script = ExtResource("1_yymfi")
@@ -15,7 +16,19 @@ render_target_update_mode = 4
 scale = Vector2(2.4, 2.4)
 
 [node name="Foregroud" type="SubViewport" parent="."]
+transparent_bg = true
 size = Vector2i(432, 432)
+render_target_update_mode = 1
+
+[node name="Label" type="Label" parent="Foregroud"]
+offset_right = 432.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_meqnu")
+theme_override_font_sizes/font_size = 80
+text = "2048"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Background" type="SubViewport" parent="."]
 size = Vector2i(432, 432)

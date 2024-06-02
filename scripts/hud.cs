@@ -11,6 +11,11 @@ public partial class hud : Control
     private uint GameOverOpacity = 0;
     private bool GameOverShown = false;
 
+    public void UpdateScore(int Score)
+    {
+        GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"score:\n{Score}";
+    }
+
     public void Update(bool _game_over = false)
     {
         var panel = GetNode<Panel>("CanvasLayer/UndoButton"); 

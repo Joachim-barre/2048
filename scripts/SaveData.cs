@@ -11,6 +11,7 @@ public partial class SaveData : Resource
 
     public int[,] GetVals(){
         if(vals.Count != 16){
+            Log.error("Failed to get values from save data");
             return null;
         }
         var Res = new  int[,]{
@@ -27,6 +28,7 @@ public partial class SaveData : Resource
 
     public void LoadVals(int[,] _vals){
         if(_vals.GetLength(0)!=4||_vals.GetLength(1)!=4){
+            Log.error("Failed to save values");
             return;
         }
         for(int i=0;i!=4;i++)

@@ -1,9 +1,16 @@
-[gd_scene format=3 uid="uid://dbtkkin4t0n3p"]
+[gd_scene load_steps=3 format=3 uid="uid://dbtkkin4t0n3p"]
+
+[ext_resource type="Script" path="res://scripts/IconGen.cs" id="1_yymfi"]
+[ext_resource type="PackedScene" uid="uid://dul0lktcikt03" path="res://scenes/tile.tscn" id="2_cbhaf"]
 
 [node name="IconGen" type="Node"]
+script = ExtResource("1_yymfi")
 
 [node name="MainIcon" type="SubViewport" parent="."]
 size = Vector2i(192, 192)
+
+[node name="Tile" parent="MainIcon" instance=ExtResource("2_cbhaf")]
+scale = Vector2(2.4, 2.4)
 
 [node name="Foregroud" type="SubViewport" parent="."]
 size = Vector2i(432, 432)

@@ -266,7 +266,7 @@ text = "score:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HiscoreLabel" type="Label" parent="CanvasLayer"]
+[node name="HighscoreLabel" type="Label" parent="CanvasLayer"]
 offset_left = 130.0
 offset_top = 160.0
 offset_right = 250.0

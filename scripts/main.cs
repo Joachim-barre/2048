@@ -88,6 +88,7 @@ public partial class main : Node{
         try {
             Log.dbg("saving game state");
             var Save = new SaveData();
+            Save.HighScore = HighScore;
             Save.Score = Score;
             Save.LoadVals(GetValues());
             ResourceSaver.Save(Save, SavePath);
@@ -100,6 +101,7 @@ public partial class main : Node{
         try {
             Log.dbg("Loading game state");
             var Save = ResourceLoader.Load<SaveData>(SavePath);
+            HighScore = Save.HighScore;
             PreScore = Save.Score;
             pre_value = Save.GetVals();
             OnUndo();

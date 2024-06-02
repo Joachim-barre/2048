@@ -14,7 +14,7 @@ public partial class hud : Control
     public void UpdateScore(int Score, int HighScore)
     {
         GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"score:\n{Score}";
-        GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"highscore:\n{HighScore}";
+        GetNode<Label>("CanvasLayer/HighscoreLabel").Text = $"highscore:\n{HighScore}";
     }
 
     public void Update(bool _game_over = false)

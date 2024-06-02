@@ -88,7 +88,7 @@ public partial class main : Node{
             var Save = new SaveData();
             Save.Score = Score;
             Save.LoadVals(GetValues());
-            ResourceSaver.Save(Save, "user://save.tres");
+            ResourceSaver.Save(Save, SavePath);
         }catch(System.Exception e){
             Log.error($"Failed to save data with Exception : {e}");
         }
@@ -97,7 +97,7 @@ public partial class main : Node{
     private bool Load(){
         try {
             Log.dbg("Loading game state");
-            var Save = ResourceLoader.Load<SaveData>("user://save.tres");
+            var Save = ResourceLoader.Load<SaveData>(SavePath);
             PreScore = Save.Score;
             pre_value = Save.GetVals();
             OnUndo();

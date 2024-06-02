@@ -25,6 +25,9 @@ public partial class main : Node{
 
     private tile[,] tiles;
     private int[,] pre_value;
+    private int PreScore;
+    private int _Score;
+
 
     public enum Dir
     {
@@ -33,6 +36,13 @@ public partial class main : Node{
         Left,
         Up,
         Down,
+    }
+    public int Score{
+        get { return _Score; }
+        set {
+            _Score = value;
+            UpdateScore();
+        }
     }
     
     // transform r and c to get the first array index to acces the array in a specified direction
@@ -61,6 +71,10 @@ public partial class main : Node{
             default:
                 return r;
         }
+    }
+
+    private void UpdateScore(){
+        GetNode<hud>("Hud").UpdateScore(Score);
     }
 
     // turn window position to grid position
@@ -140,6 +154,7 @@ public partial class main : Node{
     {
         Log.dbg("<<<  RESET  >>>");
         pre_value = GetValues();
+        PreScore = Score;
         tiles = new tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
@@ -150,6 +165,7 @@ public partial class main : Node{
         GenerateTile();
         GenerateTile();
         IsGameOver = false;
+        Score = 0;
     }
 
     public void OnUndo()
@@ -174,6 +190,7 @@ public partial class main : Node{
                 }
             }
         }
+        Score = PreScore;
     }
 
     public override void _Ready()
@@ -261,8 +278,11 @@ public partial class main : Node{
         {
             for(int j = 0;j != 4;j++)
             {   
-                if(update)
+                if(update){
                     tiles[i,j]?.Update(new_pos[i,j]);
+                    if(new_pos[i,j]?.stateCode == tile.StateChageCode.Upgrade)
+                        Score += vals[i,j];
+                }
                 if(vals[i,j] != 0)
                 {                            
                     if(new_pos[i,j].stateCode != tile.StateChageCode.Delete)
@@ -476,10 +496,12 @@ public partial class main : Node{
                 }*/
 
                 pre_value = GetValues();
+                PreScore = Score;
                 Push(dir);
                 Merge(dir);
                 Push(dir);
                 GenerateTile();
+                Log.dbg($"new score {Score}");
                 // check for game over
                 if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
                 {

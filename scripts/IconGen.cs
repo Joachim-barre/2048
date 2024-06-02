@@ -3,7 +3,10 @@ using Godot;
 public partial class IconGen : Node
 {
     public override void _Ready(){
-        GetNode<tile>("MainIcon/Tile").SetValue(2048);
+        tile t = GetNode<tile>("MainIcon/Tile");
+        t.SetValue(2048);
+        t.SetProcess(false);
+        t.Scale = new Vector2(2.4f,2.4f);
         RenderingServer.FramePostDraw += SaveViewports;
     }
 

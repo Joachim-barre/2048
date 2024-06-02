@@ -22,7 +22,12 @@ public partial class main : Node{
     public delegate void GameOverEventHandler();
 
     public bool IsGameOver;
-
+    #if DEBUG
+    public static string SavePath = "user://save_debug.tres";
+    #else
+    public static string SavePath = "user://save.tres";
+    #endif
+    
     private tile[,] tiles;
     private int[,] pre_value;
     private int PreScore;

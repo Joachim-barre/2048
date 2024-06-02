@@ -9,6 +9,9 @@ public partial class SaveData : Resource
     [Export]
     public int Score;
 
+    [Export]
+    public int HighScore;
+
     public int[,] GetVals(){
         if(vals.Count != 16){
             Log.error("Failed to get values from save data");

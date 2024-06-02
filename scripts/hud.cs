@@ -11,9 +11,10 @@ public partial class hud : Control
     private uint GameOverOpacity = 0;
     private bool GameOverShown = false;
 
-    public void UpdateScore(int Score)
+    public void UpdateScore(int Score, int HighScore)
     {
         GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"score:\n{Score}";
+        GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"highscore:\n{HighScore}";
     }
 
     public void Update(bool _game_over = false)

@@ -32,6 +32,7 @@ public partial class main : Node{
     private int[,] pre_value;
     private int PreScore;
     private int _Score;
+    private int HighScore;
 
 
     public enum Dir
@@ -79,7 +80,8 @@ public partial class main : Node{
     }
 
     private void UpdateScore(){
-        GetNode<hud>("Hud").UpdateScore(Score);
+        HighScore = Score > HighScore ? Score : HighScore;
+        GetNode<hud>("Hud").UpdateScore(Score, HighScore);
     }
 
     private void Save(){

@@ -11,10 +11,19 @@ public partial class IconGen : Node
     }
 
     public void SaveViewports(){
-        Log.info($"saving main icon to : {ProjectSettings.GlobalizePath("user://main_icon.png")}");
-        GetNode<SubViewport>("MainIcon").GetTexture().GetImage().SavePng("user://main_icon.png");
-        RenderingServer.FramePostDraw -= SaveViewports;
-        Log.info("Image saved quitting");
-        GetTree().Quit();
+        try{
+            Log.info($"saving main icon to : {ProjectSettings.GlobalizePath("user://main_icon.png")}");
+            GetNode<SubViewport>("MainIcon").GetTexture().GetImage().SavePng("user://main_icon.png");
+            Log.info($"saving background icon to : {ProjectSettings.GlobalizePath("user://background_icon.png")}");
+            GetNode<SubViewport>("Background").GetTexture().GetImage().SavePng("user://background_icon.png");
+            Log.info($"saving foreground icon to : {ProjectSettings.GlobalizePath("user://foreground_icon.png")}");
+            GetNode<SubViewport>("Foregroud").GetTexture().GetImage().SavePng("user://foreground_icon.png");
+            Log.info("Image saved quitting");
+        }catch(System.Exception e){
+            Log.error($"failed saving icons : {e}");
+        }finally{
+            RenderingServer.FramePostDraw -= SaveViewports;
+            GetTree().Quit();
+        }
     }
 }

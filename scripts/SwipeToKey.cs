@@ -2,7 +2,7 @@ using Godot;
 
 public partial class SwipeToKey : Node2D
 {
-    public float SwipeMin = 0.3f;
+    public float SwipeMin = 0.1f;
     public Vector2? SwipeStart = null;
 
     public override void _Process(double delta){

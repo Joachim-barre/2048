@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbtkkin4t0n3p"]
+
+[node name="IconGen" type="Node"]
+
+[node name="MainIcon" type="SubViewport" parent="."]
+size = Vector2i(192, 192)
+
+[node name="Foregroud" type="SubViewport" parent="."]
+size = Vector2i(432, 432)
+
+[node name="Background" type="SubViewport" parent="."]
+size = Vector2i(432, 432)

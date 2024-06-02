@@ -22,7 +22,7 @@ public partial class SaveData : Resource
         };
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++)
-                Res[i,j]=vals[i+j*4];
+                Res[i,j]=vals[i*4+j];
         return Res;
     }
 
@@ -31,8 +31,9 @@ public partial class SaveData : Resource
             Log.error("Failed to save values");
             return;
         }
+        vals = new Array<int>();
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++)
-                vals[i+j*4]=_vals[i,j];
+                vals.Add(_vals[i,j]);
     }
 }

@@ -545,7 +545,7 @@ public partial class main : Node{
                 Log.dbg($"new score {Score}");
                 Save();
                 // check for game over
-                if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left) || DryMerge(Dir.Up)|| DryMerge(Dir.Down)))
+                if(!(DryMerge(Dir.Right) || DryMerge(Dir.Left)))
                 {
                     IsGameOver = true;
                     EmitSignal(SignalName.GameOver);

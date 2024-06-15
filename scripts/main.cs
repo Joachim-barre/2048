@@ -231,6 +231,22 @@ public partial class main : Node{
         Save();
     }
 
+    public string Grid2String(int[,] vals){
+        string s = "[";
+        for(int i = 0; i != 4;i++)
+        {
+            s += "[";
+            for(int j = 0;j != 4;j++)
+            {
+                s += vals[i,j].ToString();
+                if(j!=3)
+                    s += ", ";
+            }
+            s += "]" + (i==3 ? "" : ", ");
+        }
+        return s + "]";
+    }
+
     public override void _Ready()
     {
         if(Log.LOG_SEVERITY == Log.Severity.DEBUG)

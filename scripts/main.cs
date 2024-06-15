@@ -233,6 +233,8 @@ public partial class main : Node{
 
     public override void _Ready()
     {
+        if(Log.LOG_SEVERITY == Log.Severity.DEBUG)
+            Log.LOG_SEVERITY = Log.Severity.INFO;
         GD.Randomize();
         tiles = new tile[4,4]{
             {null,null,null,null},

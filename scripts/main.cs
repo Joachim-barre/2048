@@ -238,7 +238,7 @@ public partial class main : Node{
             s += "[";
             for(int j = 0;j != 4;j++)
             {
-                s += vals[i,j]==null?vals[i,j].ToString():"null";
+                s += (vals[i,j]!=null)?vals[i,j].ToString():"null";
                 if(j!=3)
                     s += ", ";
             }

@@ -298,6 +298,7 @@ public partial class main : Node{
                     Log.dbg("\t(val1, val2) : " + new Vector2(val1, val2).ToString());
                     Log.dbg("\ttile 1 : " + tiles[idx1, idx2].ToString());
                     Log.dbg("\ttile 2 : " + tiles[idx3, idx4].ToString());
+                    Log.dbg("\tpos : " + new Vector2(idx3, idx4));
                     vals[idx1, idx2] = val1 + val2;
                     vals[idx3, idx4] = 0;
                     new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
@@ -426,7 +427,7 @@ public partial class main : Node{
                     tiles[i,j]?.Update(new_pos[i,j]);
                 if(tiles[i,j] != null)
                 {                            
-                    if(tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)
+                    if(!update || tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)
                     {
                         Vector2 _pos = WinToGrid(new_pos[i,j].new_pos);
                         next_tiles[(int)_pos.X, (int)_pos.Y]=tiles[i,j];

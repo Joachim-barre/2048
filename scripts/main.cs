@@ -284,6 +284,7 @@ public partial class main : Node{
                 new_pos[i,j] = (tiles[i,j]==null)?null: new tile.StateChage( GridToWin(new Vector2(i,j)));
         }
         int[,] vals = GetValues(); 
+        Log.dbg($"grid : {Grid2String(vals)}");
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -368,6 +369,7 @@ public partial class main : Node{
                 new_pos[i,j] = (tiles[i,j]==null)?null: new tile.StateChage( GridToWin(new Vector2(i,j)));
         }
         int[,] vals = GetValues(); 
+        Log.dbg($"grid : {Grid2String(vals)}");
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j <= 3; j++) 
@@ -460,10 +462,14 @@ public partial class main : Node{
     {
         tile[,] true_tiles = (tile[,])tiles.Clone();
 
+        Log.dbg($"grid : {Grid2String(tiles)}");
+
         Push(dir, false);
         Merge(dir, false);
 
-        int[,] vals = GetValues(); 
+        var vals = GetValues();
+
+        Log.dbg($"grid : {Grid2String(tiles)}");
         
         tiles = true_tiles;
 

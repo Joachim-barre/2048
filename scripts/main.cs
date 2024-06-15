@@ -443,7 +443,7 @@ public partial class main : Node{
                     tiles[i,j]?.Update(new_pos[i,j]);
                 if(tiles[i,j] != null)
                 {                            
-                    if(!update || tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)
+                    if(tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)
                     {
                         Vector2 _pos = WinToGrid(new_pos[i,j].new_pos);
                         next_tiles[(int)_pos.X, (int)_pos.Y]=tiles[i,j];

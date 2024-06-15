@@ -458,7 +458,7 @@ public partial class main : Node{
     // do the same as push then merge function but doesn't update tile and check for game over
     public bool DryMerge(Dir dir)
     {
-        tile[,] true_tiles = tiles;
+        tile[,] true_tiles = (tile[,])tiles.Clone();
 
         Push(dir, false);
         Merge(dir, false);

@@ -231,7 +231,7 @@ public partial class main : Node{
         Save();
     }
 
-    public string Grid2String(int[,] vals){
+    public string Grid2String<T>(T[,] vals){
         string s = "[";
         for(int i = 0; i != 4;i++)
         {

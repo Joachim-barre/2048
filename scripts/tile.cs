@@ -22,6 +22,7 @@ public partial class tile : Node2D
 
     public float scale;
     private int value;
+    private int display_value;
     public StateChage state_target;
     public Vector2 _pos;
 
@@ -70,7 +71,7 @@ public partial class tile : Node2D
         style.CornerRadiusTopLeft = 30;
         style.CornerRadiusTopRight = 30;
         ((Control)label).AddThemeStyleboxOverride("normal", style);
-        label.Text = value.ToString();
+        label.Text = display_value.ToString();
     }
 
     public override void _Ready(){
@@ -81,6 +82,7 @@ public partial class tile : Node2D
 
     public void SetValue(int new_value){
         value = new_value;
+        display_value = value;
         UpdateTexture();
     }
 
@@ -105,6 +107,8 @@ public partial class tile : Node2D
             Log.dbg("\t" + state.new_pos.ToString());
             Log.dbg("\t" + state.stateCode.ToString());
             Log.dbg("\t" + (state.fusedWith == null ? "null" : state.fusedWith.ToString()));
+        }if(state.stateCode == StateChageCode.Upgrade){
+            value *= 2;
         }if(state_target != null){
             state_target.new_pos = state.new_pos;
             if(state_target.fusedWith != null && state_target.stateCode == StateChageCode.Upgrade)
@@ -155,7 +159,7 @@ public partial class tile : Node2D
                     QueueFree();
                     break;
                 case StateChageCode.Upgrade:
-                    SetValue(value*2);
+                    SetValue(value);
                     break;
                 default:
                     break;

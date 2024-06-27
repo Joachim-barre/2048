@@ -35,9 +35,11 @@ corner_radius_bottom_left = 30
 
 [node name="Hud" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 720.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_m87vq")
 metadata/_edit_group_ = true
 
@@ -66,132 +68,97 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pp3u7")
 metadata/_edit_group_ = true
 
-[node name="TileVoid1" type="Panel" parent="TilesBg"]
+[node name="GridContainer" type="GridContainer" parent="TilesBg"]
 layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="TileVoid1" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid2" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 190.0
-offset_bottom = 90.0
+[node name="TileVoid2" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid3" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 10.0
-offset_right = 290.0
-offset_bottom = 90.0
+[node name="TileVoid3" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid4" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 10.0
-offset_right = 390.0
-offset_bottom = 90.0
+[node name="TileVoid4" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid5" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 110.0
-offset_right = 90.0
-offset_bottom = 190.0
+[node name="TileVoid5" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid6" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 110.0
-offset_right = 190.0
-offset_bottom = 190.0
+[node name="TileVoid6" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid7" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 110.0
-offset_right = 290.0
-offset_bottom = 190.0
+[node name="TileVoid7" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid8" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 110.0
-offset_right = 390.0
-offset_bottom = 190.0
+[node name="TileVoid8" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid9" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 210.0
-offset_right = 90.0
-offset_bottom = 290.0
+[node name="TileVoid9" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid10" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 310.0
-offset_right = 90.0
-offset_bottom = 390.0
+[node name="TileVoid10" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid11" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 210.0
-offset_right = 190.0
-offset_bottom = 290.0
+[node name="TileVoid11" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid12" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 310.0
-offset_right = 190.0
-offset_bottom = 390.0
+[node name="TileVoid12" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid13" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 210.0
-offset_right = 290.0
-offset_bottom = 290.0
+[node name="TileVoid13" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid14" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 310.0
-offset_right = 290.0
-offset_bottom = 390.0
+[node name="TileVoid14" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid15" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 310.0
-offset_right = 390.0
-offset_bottom = 390.0
+[node name="TileVoid15" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="TileVoid16" type="Panel" parent="TilesBg"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 210.0
-offset_right = 390.0
-offset_bottom = 290.0
+[node name="TileVoid16" type="Panel" parent="TilesBg/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

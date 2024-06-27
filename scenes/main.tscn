@@ -13,3 +13,4 @@ TileScene = ExtResource("2_lefvm")
 [connection signal="GameOver" from="." to="Hud" method="Update" binds= [true]]
 [connection signal="Reset" from="Hud" to="." method="OnReset"]
 [connection signal="Undo" from="Hud" to="." method="OnUndo"]
+[connection signal="resized" from="Hud" to="." method="OnHudResized"]

@@ -182,6 +182,19 @@ public partial class main : Node{
         return vals;
     }
 
+    public void OnHudResized(){
+        for(int i=0;i!=4;i++)
+            for(int j=0;j!=4;j++){
+                tile Tile = tiles[i,j];
+                if(Tile != null){
+                    if(Tile.state_target==null)
+                        Tile._pos = GridToWin(new Vector2(i,j));
+                    else
+                        Tile.state_target.new_pos = GridToWin(new Vector2(i,j));
+                }
+            }
+    }
+
     public void OnReset()
     {
         Log.dbg("<<<  RESET  >>>");

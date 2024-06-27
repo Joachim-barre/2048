@@ -6,17 +6,13 @@ public partial class main : Node{
     [Export]
     public PackedScene TileScene { get; set; }
 
-    [Export]
-    public Vector2 TileMapPos { get; set; }
+    public Vector2 TileMapPos { get { return GetNode<hud>("Hud").GetTileMapPos() ; } }
 
-    [Export]
-    public Vector2 TileMapSize { get; set; }
+    public Vector2 TileMapSize { get { return GetNode<hud>("Hud").GetTileMapSize() ; } }
 
-    [Export]
-    public Vector2 TileSize { get; set; }
+    public Vector2 TileSize { get { return GetNode<hud>("Hud").GetTileSize() ; } }
 
-    [Export]
-    public Vector2 TileSpacing { get; set; }
+    public Vector2 TileSpacing { get { return GetNode<hud>("Hud").GetTileSpacing() ; } }
 
     [Signal]
     public delegate void GameOverEventHandler();

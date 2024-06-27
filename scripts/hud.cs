@@ -66,4 +66,20 @@ public partial class hud : Control
             GameOverOpacity = 0;
         GetNode<Label>("CanvasLayer/GameOverLabel").Modulate = new Color(1,1,1,GameOverOpacity / 30F);
     }
+
+    public Vector2 GetTileMapPos(){
+        return GetNode<Control>("TilesBg/GridContainer").GlobalPosition;
+    }
+
+    public Vector2 GetTileMapSize(){
+        return GetNode<Control>("TilesBg/GridContainer").Size;
+    }
+
+    public Vector2 GetTileSize(){
+        return GetNode<Control>("TilesBg/GridContainer/TileVoid1").Size;
+    }
+
+    public Vector2 GetTileSpacing(){
+        return new Vector2(20,20);
+    }
 }

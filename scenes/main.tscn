@@ -7,10 +7,6 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_1geir")
 TileScene = ExtResource("2_lefvm")
-TileMapPos = Vector2(50, 260)
-TileMapSize = Vector2(380, 380)
-TileSize = Vector2(80, 80)
-TileSpacing = Vector2(20, 20)
 
 [node name="Hud" parent="." instance=ExtResource("3_ack1x")]
 

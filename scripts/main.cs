@@ -183,6 +183,9 @@ public partial class main : Node{
     }
 
     public void OnHudResized(){
+        // force update
+        GetNode<hud>("Hud").Hide();
+        GetNode<hud>("Hud").Show();
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++){
                 tile Tile = tiles[i,j];
@@ -276,6 +279,7 @@ public partial class main : Node{
         if(!Load())
             OnReset();
         //OnUndo();
+        OnHudResized();
     }
 
     // merge

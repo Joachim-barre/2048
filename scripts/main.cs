@@ -186,6 +186,10 @@ public partial class main : Node{
         // force update
         GetNode<hud>("Hud").Hide();
         GetNode<hud>("Hud").Show();
+        if(tiles==null){
+            Log.error("tiles array is null");
+            return;
+        }
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++){
                 if(tiles[i,j] != null){
@@ -275,11 +279,12 @@ public partial class main : Node{
             {4     ,64     ,1024    ,16384 },
             {8     ,128    ,2048    ,32768 },
             {16    ,256    ,4096    ,65536 },
-        };*/
+        };*/ 
         if(!Load())
             OnReset();
-        //OnUndo();
+        //OnUndo(); 
         OnHudResized();
+        GetNode<hud>("Hud").Resized += OnHudResized;
     }
 
     // merge

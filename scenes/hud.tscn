@@ -161,16 +161,35 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kvg51")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameOverLabel" type="Label" parent="TilesBg"]
+z_index = 255
+z_as_relative = false
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6oev1")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_2lcwi")
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="ResetButton" type="Panel" parent="CanvasLayer"]
-offset_left = 350.0
+[node name="TileTop" type="Control" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
 offset_top = 160.0
-offset_right = 430.0
-offset_bottom = 240.0
+grow_horizontal = 2
+
+[node name="ResetButton" type="Panel" parent="TileTop"]
+offset_left = 320.0
+offset_right = 400.0
+offset_bottom = 80.0
 metadata/_edit_group_ = true
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/ResetButton"]
+[node name="TextureButton" type="TextureButton" parent="TileTop/ResetButton"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
@@ -181,14 +200,13 @@ texture_hover = ExtResource("2_03gng")
 texture_disabled = ExtResource("2_03gng")
 texture_focused = ExtResource("2_03gng")
 
-[node name="UndoButton" type="Panel" parent="CanvasLayer"]
-offset_left = 250.0
-offset_top = 160.0
-offset_right = 330.0
-offset_bottom = 240.0
+[node name="UndoButton" type="Panel" parent="TileTop"]
+offset_left = 220.0
+offset_right = 300.0
+offset_bottom = 80.0
 metadata/_edit_group_ = true
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/UndoButton"]
+[node name="TextureButton" type="TextureButton" parent="TileTop/UndoButton"]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
@@ -199,32 +217,9 @@ texture_hover = ExtResource("3_ycp1m")
 texture_disabled = ExtResource("3_ycp1m")
 texture_focused = ExtResource("3_ycp1m")
 
-[node name="Title" type="Label" parent="CanvasLayer"]
-offset_right = 480.0
-offset_bottom = 132.0
-theme_override_fonts/font = ExtResource("1_6oev1")
-theme_override_font_sizes/font_size = 128
-text = "2048"
-
-[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 250.0
-offset_right = 440.0
-offset_bottom = 650.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_6oev1")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_2lcwi")
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_left = 30.0
-offset_top = 160.0
-offset_right = 130.0
-offset_bottom = 240.0
+[node name="ScoreLabel" type="Label" parent="TileTop"]
+offset_right = 100.0
+offset_bottom = 80.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_6oev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jl5lp")
@@ -233,11 +228,10 @@ text = "score:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighscoreLabel" type="Label" parent="CanvasLayer"]
-offset_left = 130.0
-offset_top = 160.0
-offset_right = 250.0
-offset_bottom = 240.0
+[node name="HighscoreLabel" type="Label" parent="TileTop"]
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 80.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_6oev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jl5lp")
@@ -246,5 +240,12 @@ text = "highscore:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/ResetButton/TextureButton" to="." method="OnResetButtonPressed"]
-[connection signal="pressed" from="CanvasLayer/UndoButton/TextureButton" to="." method="OnUndoButtonPressed"]
+[node name="Title" type="Label" parent="."]
+offset_right = 480.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("1_6oev1")
+theme_override_font_sizes/font_size = 128
+text = "2048"
+
+[connection signal="pressed" from="TileTop/ResetButton/TextureButton" to="." method="OnResetButtonPressed"]
+[connection signal="pressed" from="TileTop/UndoButton/TextureButton" to="." method="OnUndoButtonPressed"]

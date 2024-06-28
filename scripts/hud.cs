@@ -13,13 +13,13 @@ public partial class hud : Control
 
     public void UpdateScore(int Score, int HighScore)
     {
-        GetNode<Label>("CanvasLayer/ScoreLabel").Text = $"score:\n{Score}";
-        GetNode<Label>("CanvasLayer/HighscoreLabel").Text = $"highscore:\n{HighScore}";
+        GetNode<Label>("TileTop/ScoreLabel").Text = $"score:\n{Score}";
+        GetNode<Label>("TileTop/HighscoreLabel").Text = $"highscore:\n{HighScore}";
     }
 
     public void Update(bool _game_over = false)
     {
-        var panel = GetNode<Panel>("CanvasLayer/UndoButton"); 
+        var panel = GetNode<Panel>("TileTop/UndoButton"); 
         var style = new StyleBoxFlat();
         style.BgColor = new Color("#7a6a4e"); 
         style.CornerRadiusBottomLeft = 30;
@@ -27,7 +27,7 @@ public partial class hud : Control
         style.CornerRadiusTopLeft = 30;
         style.CornerRadiusTopRight = 30;
         ((Control)panel).AddThemeStyleboxOverride("panel", style);
-        panel = GetNode<Panel>("CanvasLayer/ResetButton");
+        panel = GetNode<Panel>("TileTop/ResetButton");
         if(_game_over)
         {
             style = new StyleBoxFlat();
@@ -64,7 +64,7 @@ public partial class hud : Control
             GameOverOpacity = GameOverOpacity > 30 ? GameOverOpacity : GameOverOpacity + 1;
         }else
             GameOverOpacity = 0;
-        GetNode<Label>("CanvasLayer/GameOverLabel").Modulate = new Color(1,1,1,GameOverOpacity / 30F);
+        GetNode<Label>("TilesBg/GameOverLabel").Modulate = new Color(1,1,1,GameOverOpacity / 30F);
     }
 
     public Vector2 GetTileMapPos(){

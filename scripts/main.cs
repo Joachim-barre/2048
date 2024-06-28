@@ -82,7 +82,7 @@ public partial class main : Node{
 
     private void Save(){
         try {
-            Log.info("saving game state");
+            Log.dbg("saving game state");
             var Save = new SaveData();
             Save.HighScore = HighScore;
             Save.Score = Score;
@@ -95,7 +95,7 @@ public partial class main : Node{
 
     private bool Load(){
         try {
-            Log.info("Loading game state");
+            Log.dbg("Loading game state");
             var Save = ResourceLoader.Load<SaveData>(SavePath);
             HighScore = Save.HighScore;
             PreScore = Save.Score;

@@ -89,8 +89,8 @@ texture_focused = ExtResource("2_03gng")
 
 [node name="UndoButton" type="Panel" parent="TileTop"]
 layout_mode = 0
-offset_left = 220.0
-offset_right = 300.0
+offset_left = 230.0
+offset_right = 310.0
 offset_bottom = 80.0
 metadata/_edit_group_ = true
 
@@ -119,8 +119,8 @@ vertical_alignment = 1
 
 [node name="HighscoreLabel" type="Label" parent="TileTop"]
 layout_mode = 0
-offset_left = 100.0
-offset_right = 220.0
+offset_left = 105.0
+offset_right = 225.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_6oev1")

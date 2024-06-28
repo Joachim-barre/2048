@@ -64,19 +64,19 @@ public partial class hud : Control
             GameOverOpacity = GameOverOpacity > 30 ? GameOverOpacity : GameOverOpacity + 1;
         }else
             GameOverOpacity = 0;
-        GetNode<Label>("TilesBg/GameOverLabel").Modulate = new Color(1,1,1,GameOverOpacity / 30F);
+        GetNode<Label>("TileTop/TilesBg/GameOverLabel").Modulate = new Color(1,1,1,GameOverOpacity / 30F);
     }
 
     public Vector2 GetTileMapPos(){
-        return GetNode<Control>("TilesBg/GridContainer").GlobalPosition;
+        return GetNode<Control>("TileTop/TilesBg/GridContainer").GlobalPosition;
     }
 
     public Vector2 GetTileMapSize(){
-        return GetNode<Control>("TilesBg/GridContainer").Size;
+        return GetNode<Control>("TileTop/TilesBg/GridContainer").Size;
     }
 
     public Vector2 GetTileSize(){
-        return GetNode<Control>("TilesBg/GridContainer/TileVoid1").Size;
+        return GetNode<Control>("TileTop/TilesBg/GridContainer/TileVoid1").Size;
     }
 
     public Vector2 GetTileSpacing(){

@@ -188,8 +188,8 @@ public partial class main : Node{
         GetNode<hud>("Hud").Show();
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++){
-                tile Tile = tiles[i,j];
-                if(Tile != null){
+                if(tiles[i,j] != null){
+                    tile Tile = tiles[i,j];
                     if(Tile.state_target==null)
                         Tile._pos = GridToWin(new Vector2(i,j));
                     else
@@ -271,10 +271,10 @@ public partial class main : Node{
             {null,null,null,null},
         };
         /*pre_value = new int[,]{
-            {0    ,16    ,256    ,4096 },
-            {2    ,32    ,512    ,8192 },
-            {4    ,64    ,1024   ,16384},
-            {8    ,128   ,2048   ,32768},
+            {131072,32     ,512     ,8192  },
+            {4     ,64     ,1024    ,16384 },
+            {8     ,128    ,2048    ,32768 },
+            {16    ,256    ,4096    ,65536 },
         };*/
         if(!Load())
             OnReset();

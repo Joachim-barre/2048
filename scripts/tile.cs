@@ -45,15 +45,17 @@ public partial class tile : Node2D
             {16    ,Color.Color8(255, 101, 0  )},
             {32    ,Color.Color8(255, 68 , 68 )},
             {64    ,Color.Color8(255, 0  , 0  )},
-            {128   ,Color.Color8(255, 236, 94 )},
+            {128   ,Color.Color8(244, 255, 0 )},
             {256   ,Color.Color8(255, 229, 42 )},
-            {512   ,Color.Color8(255, 226, 16 )},
+            {512   ,Color.Color8(255, 217, 0 )},
             {1024  ,Color.Color8(192, 255, 0  )},
             {2048  ,Color.Color8(65 , 255, 0  )},
-            {4096  ,Color.Color8(0  , 255, 212)},
+            {4096  ,Color.Color8(0  , 255, 133)},
             {8192  ,Color.Color8(0  , 175, 255)},
             {16384 ,Color.Color8(0  , 14 , 255)},
             {32768 ,Color.Color8(84 , 0  , 153)},
+            {65536 ,Color.Color8(156, 0  , 171)},
+            {131072,Color.Color8(255, 0  , 236)},
         };
     }
 

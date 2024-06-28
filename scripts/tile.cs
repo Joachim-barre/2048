@@ -142,7 +142,7 @@ public partial class tile : Node2D
         Scale = new Vector2(scale, scale); 
         if(scale < 1)
         {
-            scale += 3F * (float)delta;
+            scale += 2F * (float)delta;
             if(scale >= 1){
                 scale = 1.1F;
             }

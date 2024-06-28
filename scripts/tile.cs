@@ -142,12 +142,14 @@ public partial class tile : Node2D
         Scale = new Vector2(scale, scale); 
         if(scale < 1)
         {
-            scale *= 1.05F;
+            scale += 3F * (float)delta;
             if(scale >= 1){
                 scale = 1.1F;
             }
-        }if(scale > 1)
-            scale -= (scale - 1) / 10;
+        }if(scale > 1){
+            scale -= 1F * (float)delta;
+            scale = scale <= 1 ? 1 : scale;
+        }
         if(state_target == null)
         {
             UpdatePos();

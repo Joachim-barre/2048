@@ -174,7 +174,7 @@ public partial class tile : Node2D
             _pos = state_target.new_pos;
         }else
         {
-            _pos += (state_target.new_pos - _pos) / 5;
+            _pos += (state_target.new_pos - _pos) * 7 * (float)delta;
         }
         UpdatePos();
     }

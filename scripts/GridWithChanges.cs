@@ -13,7 +13,7 @@ public partial class GridWithChanges : GodotObject{
 
     public GridWithChanges Bind(System.Func<Grid, GridWithChanges> func){
         var res = func(grid);
-        res.changes = changes.Cast<GridChange>.Concat(res.changes.Cast<GridChange>).ToArray();
+        res.changes = new  Array<GridChange>(changes.Concat(res.changes).ToArray());
         return res;
     }
 

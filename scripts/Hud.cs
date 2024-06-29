@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class hud : Control
+public partial class Hud : Control
 {
     [Signal]
     public delegate void ResetEventHandler ();

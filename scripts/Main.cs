@@ -2,17 +2,17 @@
 using Godot;
 using Godot.Collections;
 
-public partial class main : Node{
+public partial class Main : Node{
     [Export]
     public PackedScene TileScene { get; set; }
 
-    public Vector2 TileMapPos { get { return GetNode<hud>("Hud").GetTileMapPos() ; } }
+    public Vector2 TileMapPos { get { return GetNode<Hud>("Hud").GetTileMapPos() ; } }
 
-    public Vector2 TileMapSize { get { return GetNode<hud>("Hud").GetTileMapSize() ; } }
+    public Vector2 TileMapSize { get { return GetNode<Hud>("Hud").GetTileMapSize() ; } }
 
-    public Vector2 TileSize { get { return GetNode<hud>("Hud").GetTileSize() ; } }
+    public Vector2 TileSize { get { return GetNode<Hud>("Hud").GetTileSize() ; } }
 
-    public Vector2 TileSpacing { get { return GetNode<hud>("Hud").GetTileSpacing() ; } }
+    public Vector2 TileSpacing { get { return GetNode<Hud>("Hud").GetTileSpacing() ; } }
 
     [Signal]
     public delegate void GameOverEventHandler();
@@ -77,7 +77,7 @@ public partial class main : Node{
 
     private void UpdateScore(){
         HighScore = Score > HighScore ? Score : HighScore;
-        GetNode<hud>("Hud").UpdateScore(Score, HighScore);
+        GetNode<Hud>("Hud").UpdateScore(Score, HighScore);
     }
 
     private void Save(){
@@ -184,8 +184,8 @@ public partial class main : Node{
 
     public void OnHudResized(){
         // force update
-        GetNode<hud>("Hud").Hide();
-        GetNode<hud>("Hud").Show();
+        GetNode<Hud>("Hud").Hide();
+        GetNode<Hud>("Hud").Show();
         if(tiles==null){
             Log.error("tiles array is null");
             return;
@@ -284,7 +284,7 @@ public partial class main : Node{
             OnReset();
         //OnUndo(); 
         OnHudResized();
-        GetNode<hud>("Hud").Resized += OnHudResized;
+        GetNode<Hud>("Hud").Resized += OnHudResized;
     }
 
     // merge

@@ -24,7 +24,7 @@ public partial class main : Node{
     public static string SavePath = "user://save.tres";
     #endif
     
-    private tile[,] tiles;
+    private Tile[,] tiles;
     private int[,] pre_value;
     private int PreScore;
     private int _Score;
@@ -132,19 +132,19 @@ public partial class main : Node{
     }
 
     // create a tile a the specified grid position
-    public tile CreateTile(Vector2 _pos)
+    public Tile CreateTile(Vector2 _pos)
     {
-        var Tile = TileScene.Instantiate<tile>();
-        Tile._pos = GridToWin(_pos);
-        Tile.scale = 0.5F;
-        Tile.UpdatePos();
-        AddChild(Tile);
-        tiles[Mathf.FloorToInt(_pos.X), Mathf.FloorToInt(_pos.Y)] = Tile;
-        return Tile;
+        var tile = TileScene.Instantiate<Tile>();
+        tile._pos = GridToWin(_pos);
+        tile.scale = 0.5F;
+        tile.UpdatePos();
+        AddChild(tile);
+        tiles[Mathf.FloorToInt(_pos.X), Mathf.FloorToInt(_pos.Y)] = tile;
+        return tile;
     }
 
     // generate a tile at a random free postion on the grid
-    public tile GenerateTile(){
+    public Tile GenerateTile(){
         var nullIndices = new Array<Vector2>();
         for (int i = 0; i < tiles.GetLength(0); i++)
         {
@@ -160,9 +160,9 @@ public partial class main : Node{
         Vector2 pos = nullIndices[idx];
         Log.dbg("generated tile : ");
         Log.dbg("\t" + pos.ToString());
-        var Tile = CreateTile(pos);
-        Tile.SetValue(((int)Mathf.Abs(GD.Randi() % 10))<=7 ? 2 : 4);
-        return Tile;
+        var tile = CreateTile(pos);
+        tile.SetValue(((int)Mathf.Abs(GD.Randi() % 10))<=7 ? 2 : 4);
+        return tile;
     }
 
     // get the grid as an array of values
@@ -193,11 +193,11 @@ public partial class main : Node{
         for(int i=0;i!=4;i++)
             for(int j=0;j!=4;j++){
                 if(tiles[i,j] != null){
-                    tile Tile = tiles[i,j];
-                    if(Tile.state_target==null)
-                        Tile._pos = GridToWin(new Vector2(i,j));
+                    Tile tile = tiles[i,j];
+                    if(tile.state_target==null)
+                        tile._pos = GridToWin(new Vector2(i,j));
                     else
-                        Tile.state_target.new_pos = GridToWin(new Vector2(i,j));
+                        tile.state_target.new_pos = GridToWin(new Vector2(i,j));
                 }
             }
     }
@@ -207,7 +207,7 @@ public partial class main : Node{
         Log.dbg("<<<  RESET  >>>");
         pre_value = GetValues();
         PreScore = Score;
-        tiles = new tile[4,4]{
+        tiles = new Tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -225,7 +225,7 @@ public partial class main : Node{
     {
         GetTree().CallGroup("tiles", Node.MethodName.QueueFree);
         Log.dbg("<<<  UNDO  >>>");
-        tiles = new tile[4,4]{
+        tiles = new Tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -238,7 +238,7 @@ public partial class main : Node{
             {
                 if(pre_value[i,j] != 0)
                 {
-                    tile t = CreateTile(new Vector2(i,j));
+                    Tile t = CreateTile(new Vector2(i,j));
                     t.SetValue(pre_value[i,j]);
                 }
             }
@@ -268,7 +268,7 @@ public partial class main : Node{
         if(Log.LOG_SEVERITY == Log.Severity.DEBUG)
             Log.LOG_SEVERITY = Log.Severity.INFO;
         GD.Randomize();
-        tiles = new tile[4,4]{
+        tiles = new Tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -290,7 +290,7 @@ public partial class main : Node{
     // merge
     public void Merge(Dir dir, bool update=true)
     {
-        var new_pos = new tile.StateChage[4,4]{
+        var new_pos = new Tile.StateChage[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -299,7 +299,7 @@ public partial class main : Node{
         for(int i=0;i != 4;i++)
         {
             for(int j=0;j != 4;j++)
-                new_pos[i,j] = (tiles[i,j]==null)?null: new tile.StateChage( GridToWin(new Vector2(i,j)));
+                new_pos[i,j] = (tiles[i,j]==null)?null: new Tile.StateChage( GridToWin(new Vector2(i,j)));
         }
         int[,] vals = GetValues(); 
         Log.dbg($"grid : {Grid2String(vals)}");
@@ -336,15 +336,15 @@ public partial class main : Node{
                     Log.dbg("\tpos : " + new Vector2(idx3, idx4));
                     vals[idx1, idx2] = val1 + val2;
                     vals[idx3, idx4] = 0;
-                    new_pos[idx3, idx4].stateCode = tile.StateChageCode.Delete;
-                    new_pos[idx1, idx2].stateCode = tile.StateChageCode.Upgrade;
+                    new_pos[idx3, idx4].stateCode = Tile.StateChageCode.Delete;
+                    new_pos[idx1, idx2].stateCode = Tile.StateChageCode.Upgrade;
                     new_pos[idx3, idx4].new_pos = new_pos[idx1, idx2].new_pos;
                     new_pos[idx3,idx4].fusedWith = tiles[idx1, idx2];
                     new_pos[idx1,idx2].fusedWith = tiles[idx3, idx4]; 
                 }
             }
         }
-        tile[,] next_tiles = new tile[4,4]{
+        Tile[,] next_tiles = new Tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -357,12 +357,12 @@ public partial class main : Node{
             {   
                 if(update){
                     tiles[i,j]?.Update(new_pos[i,j]);
-                    if(new_pos[i,j]?.stateCode == tile.StateChageCode.Upgrade)
+                    if(new_pos[i,j]?.stateCode == Tile.StateChageCode.Upgrade)
                         Score += vals[i,j];
                 }
                 if(vals[i,j] != 0)
                 {                            
-                    if(new_pos[i,j].stateCode != tile.StateChageCode.Delete)
+                    if(new_pos[i,j].stateCode != Tile.StateChageCode.Delete)
                     {
                         Vector2 _pos = WinToGrid(new_pos[i,j].new_pos);
                         next_tiles[(int)_pos.X, (int)_pos.Y]=tiles[i,j];
@@ -375,7 +375,7 @@ public partial class main : Node{
 
     // push tiles
     public void Push(Dir dir, bool update = true){
-        var new_pos = new tile.StateChage[4,4]{
+        var new_pos = new Tile.StateChage[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -384,7 +384,7 @@ public partial class main : Node{
         for(int i=0;i != 4;i++)
         {
             for(int j=0;j != 4;j++)
-                new_pos[i,j] = (tiles[i,j]==null)?null: new tile.StateChage( GridToWin(new Vector2(i,j)));
+                new_pos[i,j] = (tiles[i,j]==null)?null: new Tile.StateChage( GridToWin(new Vector2(i,j)));
         }
         int[,] vals = GetValues(); 
         Log.dbg($"grid : {Grid2String(vals)}");
@@ -448,7 +448,7 @@ public partial class main : Node{
                 }
             }
         }
-        tile[,] next_tiles = new tile[4,4]{
+        Tile[,] next_tiles = new Tile[4,4]{
             {null,null,null,null},
             {null,null,null,null},
             {null,null,null,null},
@@ -463,7 +463,7 @@ public partial class main : Node{
                     tiles[i,j]?.Update(new_pos[i,j]);
                 if(tiles[i,j] != null)
                 {                            
-                    if(tiles[i,j].state_target?.stateCode != tile.StateChageCode.Delete)
+                    if(tiles[i,j].state_target?.stateCode != Tile.StateChageCode.Delete)
                     {
                         Vector2 _pos = WinToGrid(new_pos[i,j].new_pos);
                         next_tiles[(int)_pos.X, (int)_pos.Y]=tiles[i,j];
@@ -478,7 +478,7 @@ public partial class main : Node{
     // do the same as push then merge function but doesn't update tile and check for game over
     public bool DryMerge(Dir dir)
     {
-        tile[,] true_tiles = (tile[,])tiles.Clone();
+        Tile[,] true_tiles = (Tile[,])tiles.Clone();
 
         Log.dbg($"grid : {Grid2String(tiles)}");
 

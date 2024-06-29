@@ -2,12 +2,12 @@
 using Godot;
 using Godot.Collections;
 
-public partial class tile : Node2D
+public partial class Tile : Node2D
 {
     public class StateChage{
         public Vector2 new_pos = new Vector2(0,0);
         public StateChageCode stateCode = StateChageCode.None;
-        public tile fusedWith = null;
+        public Tile fusedWith = null;
         public StateChage()
         {
 
@@ -35,7 +35,7 @@ public partial class tile : Node2D
         Upgrade,
     }
 
-    static tile()
+    static Tile()
     {
         colors = new Dictionary<int, Color>()
         {

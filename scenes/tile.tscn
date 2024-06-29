@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dul0lktcikt03"]
 
-[ext_resource type="Script" path="res://scripts/tile.cs" id="1_ea5lm"]
+[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_ndwte"]
 [ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="2_8nirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq3bs"]
@@ -11,7 +11,7 @@ corner_radius_bottom_left = 30
 
 [node name="Tile" type="Node2D" groups=["tiles"]]
 position = Vector2(1, 0)
-script = ExtResource("1_ea5lm")
+script = ExtResource("1_ndwte")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="."]

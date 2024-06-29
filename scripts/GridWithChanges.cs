@@ -1,6 +1,6 @@
 using Godot;
 using Godot.Collections;
-using GridChange;
+using GridChanges;
 using System.Linq;
 
 public partial class GridWithChanges : GodotObject{

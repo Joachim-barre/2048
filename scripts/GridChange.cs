@@ -1,7 +1,7 @@
 using Godot;
 
-namespace GridChange {
-    public abstract class GridChange : GodotObject{
+namespace GridChanges {
+    public abstract partial class GridChange : GodotObject{
         public abstract void Apply(tile[,] tiles);
     }
 }

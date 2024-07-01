@@ -10,7 +10,7 @@ namespace Utils{
         Down,
     }
 
-    public static class Utils{
+    public static class Util{
         // transform r and c to get the first array index to acces the array in a specified direction
         public static int GetIdx2(Dir dir,int r, int c)
         {

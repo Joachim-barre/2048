@@ -272,8 +272,8 @@ public partial class Main : Node{
             for (int j = 0; j < 3; j++)
             {
                 // Log.dbg("---------------------------------------");
-                int idx1 = Utils.GetIdx1(dir, i, j);
-                int idx2 = Utils.GetIdx2(dir, i, j);
+                int idx1 = Util.GetIdx1(dir, i, j);
+                int idx2 = Util.GetIdx2(dir, i, j);
                 int val1 = vals[idx1, idx2];
                 //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
                 
@@ -281,8 +281,8 @@ public partial class Main : Node{
                     continue;
 
                 int k = j + 1; 
-                int idx3 = Utils.GetIdx1(dir, i, k);
-                int idx4 = Utils.GetIdx2(dir, i, k);
+                int idx3 = Util.GetIdx1(dir, i, k);
+                int idx4 = Util.GetIdx2(dir, i, k);
                 int val2 = vals[idx3, idx4];
 
                 if (val2 == 0)
@@ -357,8 +357,8 @@ public partial class Main : Node{
             for (int j = 0; j <= 3; j++) 
             {
                 // Log.dbg("---------------------------------------");
-                int idx1 = Utils.GetIdx1(dir, i, j);
-                int idx2 = Utils.GetIdx2(dir, i, j);
+                int idx1 = Util.GetIdx1(dir, i, j);
+                int idx2 = Util.GetIdx2(dir, i, j);
                 int val1 = vals[idx1, idx2];
                 //Log.dbg("(pos(r,c), pos(r,c).T, val) : " + new Vector2(i, j).ToString() + " " + new Vector2(idx1, idx2).ToString() + " " + val1.ToString());
                 
@@ -367,8 +367,8 @@ public partial class Main : Node{
 
                 for (int k = j - 1; k >= 0; k--)
                 {
-                    int idx3 = Utils.GetIdx1(dir, i, k);
-                    int idx4 = Utils.GetIdx2(dir, i, k);
+                    int idx3 = Util.GetIdx1(dir, i, k);
+                    int idx4 = Util.GetIdx2(dir, i, k);
                     int val2 = vals[idx3, idx4];
                     if(val2 != 0)
                         break;
@@ -390,8 +390,8 @@ public partial class Main : Node{
                     }
 
 
-                    int idx5 = Utils.GetIdx1(dir, i, k-1);
-                    int idx6 = Utils.GetIdx2(dir, i, k-1);
+                    int idx5 = Util.GetIdx1(dir, i, k-1);
+                    int idx6 = Util.GetIdx2(dir, i, k-1);
                     int val3 = vals[idx5, idx6];
                                         
                     if (val3 != 0)
@@ -511,15 +511,15 @@ public partial class Main : Node{
                     for(int j = 3;j != 0;j--)
                     {
                         GD.Print("---------------------------------------");
-                        int idx1 = Utils.GetIdx1(dir, i);
-                        int idx2 = Utils.GetIdx2(dir, j);
+                        int idx1 = Util.GetIdx1(dir, i);
+                        int idx2 = Util.GetIdx2(dir, j);
                         int val1 = vals[idx1, idx2];
                         GD.Print( "(pos1, pos2, pos2.T, val) : " + (new Vector4(i, j,idx2,val1)).ToString());
                         if(val1 == 0)
                             continue;
                         for(int k = j - 1;k != -1;k--)
                         {
-                            int idx3 = Utils.GetIdx2(dir, k);
+                            int idx3 = Util.GetIdx2(dir, k);
                             int val2 = vals[idx1, idx3];
                             if(val2 == 0)
                                 continue;

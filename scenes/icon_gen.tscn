@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbtkkin4t0n3p"]
 
-[ext_resource type="Script" path="res://scripts/IconGen.cs" id="1_yymfi"]
+[ext_resource type="Script" uid="uid://cwj5cdlet6kwb" path="res://scripts/IconGen.cs" id="1_yymfi"]
 [ext_resource type="PackedScene" uid="uid://dul0lktcikt03" path="res://scenes/tile.tscn" id="2_cbhaf"]
 [ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="3_meqnu"]
 

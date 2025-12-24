@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dul0lktcikt03"]
 
-[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_ndwte"]
+[ext_resource type="Script" uid="uid://m5irebrcu8mm" path="res://scripts/Tile.cs" id="1_ndwte"]
 [ext_resource type="FontFile" uid="uid://cvujvt6d5e2wn" path="res://assets/font.TTF" id="2_8nirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq3bs"]

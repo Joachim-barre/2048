@@ -20,9 +20,9 @@ public partial class Main : Node{
 
     public bool IsGameOver;
     #if DEBUG
-    public static string SavePath = "user://save_debug.tres";
+    public static string SavePath = "user://save_debug.dat";
     #else
-    public static string SavePath = "user://save.tres";
+    public static string SavePath = "user://save.dat";
     #endif
     
     private Tile[,] tiles;
@@ -51,7 +51,8 @@ public partial class Main : Node{
             Save.HighScore = HighScore;
             Save.Score = Score;
             Save.LoadVals(GetValues());
-            ResourceSaver.Save(Save, SavePath);
+            using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
+            Save.Write(file);
         }catch(System.Exception e){
             Log.error($"Failed to save data with Exception : {e}");
         }
@@ -60,7 +61,9 @@ public partial class Main : Node{
     private bool Load(){
         try {
             Log.dbg("Loading game state");
-            var Save = ResourceLoader.Load<SaveData>(SavePath);
+            using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Read);
+            var Save = SaveData.Read(file);
+            file.StoreVar(Save);
             HighScore = Save.HighScore;
             PreScore = Save.Score;
             pre_value = Save.GetVals();

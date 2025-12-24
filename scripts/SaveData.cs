@@ -39,4 +39,28 @@ public partial class SaveData : Resource
             for(int j=0;j!=4;j++)
                 vals.Add(_vals[i,j]);
     }
+
+    public void Write(FileAccess file) {
+        file.Store32(2048); // magic number
+        file.Store32((uint)Score);
+        file.Store32((uint)HighScore);
+        file.StoreVar(vals);
+    }
+
+    public static SaveData Read(FileAccess file) {
+        if (file.Get32() != 2048) {
+            Log.error("invalid save file format (bad magic number)");
+            return null;
+        }
+        var res = new SaveData();
+        res.Score = (int)file.Get32();
+        res.HighScore = (int)file.Get32();
+        var vals = file.GetVar(false);
+        if (vals.VariantType != Variant.Type.Array) {
+            Log.error("invalid save file format (invalid type for the array :"+vals.VariantType.ToString()+")");
+            return null;
+        }
+        res.vals = vals.AsGodotArray<int>();
+        return res;
+    }
 }

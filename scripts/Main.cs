@@ -180,7 +180,7 @@ public partial class Main : Node{
             {null,null,null,null},
             {null,null,null,null},
         };
-        GetTree().CallGroup("tiles", Node.MethodName.QueueFree);
+        GetTree().CallGroup("tiles", Tile.MethodName.Delete);
         GenerateTile();
         GenerateTile();
         IsGameOver = false;
@@ -190,7 +190,7 @@ public partial class Main : Node{
 
     public void OnUndo()
     {
-        GetTree().CallGroup("tiles", Node.MethodName.QueueFree);
+        GetTree().CallGroup("tiles", Tile.MethodName.Delete);
         Log.dbg("<<<  UNDO  >>>");
         tiles = new Tile[4,4]{
             {null,null,null,null},

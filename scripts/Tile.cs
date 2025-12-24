@@ -19,12 +19,19 @@ public partial class Tile : Node2D
         }
     }
 
+    public static float MoveSpeed = 10F;
+    public static float ScaleSpeed = 5F;
 
+    public float initial_scale;
+    public float scale_time;
     public float scale;
+    public float target_scale;
+    public float target_scale2;
     private int value;
     private int display_value;
     public StateChage state_target;
     public Vector2 _pos;
+    public bool is_deleting;
 
     private static readonly Dictionary<int, Color> colors;
 
@@ -78,7 +85,11 @@ public partial class Tile : Node2D
 
     public override void _Ready(){
         value = 2;
-        scale = 0.5F;
+        scale = 0.0F;
+        initial_scale=scale;
+        scale_time=0.0F;
+        target_scale = 0.6F;
+        target_scale2=1.2F;
         UpdateTexture();
     } 
 
@@ -140,16 +151,18 @@ public partial class Tile : Node2D
     public override void _Process(double delta)
     {
         Scale = new Vector2(scale, scale); 
-        if(scale < 1)
-        {
-            scale += 2F * (float)delta;
-            if(scale >= 1){
-                scale = 1.1F;
+        scale_time+=(float)delta*ScaleSpeed;
+        if(scale_time >= 1.0F){
+            scale_time-=1.0F;;
+            scale=target_scale;
+            initial_scale=scale;
+            target_scale=target_scale2;
+            target_scale2=1.0F;
+            if (is_deleting&&scale==0.0F) {
+                QueueFree();
             }
-        }if(scale > 1){
-            scale -= 1F * (float)delta;
-            scale = scale <= 1 ? 1 : scale;
         }
+        scale=Mathf.Lerp(initial_scale, target_scale, (float)scale_time);  
         if(state_target == null)
         {
             UpdatePos();
@@ -159,7 +172,10 @@ public partial class Tile : Node2D
             RemoveFromGroup("animating_tiles");
             switch(state_target.stateCode){
                 case StateChageCode.Delete:
-                    state_target.fusedWith.scale = 1.3F;
+                    state_target.fusedWith.scale=1F;
+                    state_target.fusedWith.target_scale=1.3F;
+                    state_target.fusedWith.target_scale2=1F;
+                    state_target.fusedWith.scale_time=0.0F;
                     QueueFree();
                     break;
                 case StateChageCode.Upgrade:
@@ -174,8 +190,15 @@ public partial class Tile : Node2D
             _pos = state_target.new_pos;
         }else
         {
-            _pos += (state_target.new_pos - _pos) * 7 * (float)delta;
+            _pos = _pos.Lerp(state_target.new_pos, (float)delta*MoveSpeed);
         }
         UpdatePos();
+    }
+
+    public void Delete() {
+        is_deleting=true;
+        target_scale=0.5F;
+        target_scale2=0.0F;
+        scale_time=0.0F;
     }
 }
